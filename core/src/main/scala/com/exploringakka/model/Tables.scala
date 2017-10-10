@@ -10,20 +10,6 @@ object Tables {
 
    import profile.api._
 
-   class MovieScreeningTable(tag : Tag) extends Table[MovieScreening](tag,"movieScreening") {
-
-    def screenId = column[String]("screenId",O.PrimaryKey, O.Length(200,varying=true))
-    def imdbId = column[String]("imdbId")
-    def availableSeats = column[Int]("availableSeats")
-    def reservedSeats = column[Int]("reservedSeats")
-
-    def * = (screenId,imdbId,availableSeats,reservedSeats).mapTo[MovieScreening]
-
-  }
-
-  lazy val MovieScreeningTable = TableQuery(tag => new MovieScreeningTable(tag))
-
-
   class MovieTable(tag: Tag) extends Table[Movie](tag,"movie") {
     def imdbId = column[String]("imdbId",O.PrimaryKey, O.Length(200,varying=true))
     def movieTitle = column[String]("movieTitle")
